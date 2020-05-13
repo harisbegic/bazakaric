@@ -33,8 +33,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {{ Request::path() === 'reports' ? 'active' : '' }}">
-                            <a href="#" class="nav-link">Izvještaji</a>
+{{--                    <li class="nav-item {{ Request::path() === 'reports' ? 'active' : '' }}"> --}}
+                        <li class="nav-item dropdown">
+                            <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Izvještaji</a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('reports.index') }}">
+                                        Svi izvještaji
+                                    </a>
+                                    @can('post-reports')
+                                        <a class="dropdown-item" href="{{ route('reports.create') }}">
+                                            Postavi izvještaj
+                                        </a>
+                                    @endcan
+                                </div>
                         </li>
                     </ul>
 

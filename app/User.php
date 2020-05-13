@@ -56,4 +56,8 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function report() {
+        return $this->hasMany('App\Report');
+    }
 }
